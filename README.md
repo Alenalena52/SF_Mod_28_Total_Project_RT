@@ -9,7 +9,7 @@
 3. Провести автоматизированное тестирование продукта (не менее 15 автотестов). Заказчик ожидает по одному автотесту на каждый написанный тест-кейс. Оформите свой набор автотестов в GitHub.
 4. Оформить описание обнаруженных дефектов. 
 
-Требования по проекту:
+Требования по проекту: https://docs.google.com/document/d/1RRWhr_4bV_VTyNxr-lyDkJ3jaPVwXQFg/edit?usp=sharing&ouid=100674749469134479365&rtpof=true&sd=true
 
 Тест-кейсы и баг-отчет: https://docs.google.com/spreadsheets/d/12JgyW8qOhoWak9BE-K6iTfrVC2ymedoj/edit#gid=999401712
 
