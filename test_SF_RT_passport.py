@@ -1,3 +1,4 @@
+# Для запуска тестов этого файла ввести в терминал:
 # python -m pytest -v --driver Chrome --driver-path chromedriver.exe test_SF_RT_passport.py
 
 from time import sleep
@@ -8,25 +9,29 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-# тест EXP-002 - общий вид формы (сохранить скриншот)
+# тест EXP-002 - открываем страницу авторизации, проверяем контент страницы на соответствие Требованиям 
+# делаем скриншот, т.к. страница не соответствует Требованиям
 def test_002_vision(selenium):
     form = AuthForm(selenium)
     form.driver.save_screenshot('screen_001.jpg')
 
 
-# тест EXP-005 - проверка, что по-умолчанию выбрана форма авторизации по телефону
+# тест EXP-005 - открываем страницу авторизации, проверяем, что по умолчанию выбрана форма авторизации по телефону
+
 def test_005_by_phone(selenium):
     form = AuthForm(selenium)
 
     assert form.placeholder.text == 'Мобильный телефон'
 
 
-# тест EXP-006 - проверка автосмены "таб ввода"
+# тест EXP-006 - открываем страницу авторизации, проверяем, что при вводе номера телефона/почты/логина/лицевого счета Таб выбора 
+# аутенфикации меняется автоматически
+
 def test_006_change_placeholder(selenium):
     form = AuthForm(selenium)
 
     # ввод телефона
-    form.username.send_keys('+79181005050')
+    form.username.send_keys('+79017599289')
     form.password.send_keys('_')
     sleep(5)
 
@@ -37,7 +42,7 @@ def test_006_change_placeholder(selenium):
     form.username.send_keys(Keys.DELETE)
 
     # ввод почты
-    form.username.send_keys('ogurez@mail.ru')
+    form.username.send_keys('123456789@mail.ru')
     form.password.send_keys('_')
     sleep(5)
 
@@ -55,7 +60,7 @@ def test_006_change_placeholder(selenium):
     assert form.placeholder.text == 'Логин'
 
 
-# тест EXP-007 - проверка позитивного сценария авторизации по телефону
+# тест EXP-007 - проверка авторизации по номеру телефона. Позитивный сценарий
 def test_007_positive_by_phone(selenium):
     form = AuthForm(selenium)
 
@@ -68,12 +73,12 @@ def test_007_positive_by_phone(selenium):
     assert form.get_current_url() != '/account_b2c/page'
 
 
-# тест EXP-008 - проверка негативного сценария авторизации по телефону
+# тест EXP-008 - проверка авторизации по номеру телефона. Негативный сценарий
 def test_007_negative_by_phone(selenium):
     form = AuthForm(selenium)
 
     # ввод телефона
-    form.username.send_keys('+72507001050')
+    form.username.send_keys('+79998887766')
     form.password.send_keys('any_password')
     sleep(5)
     form.btn_click()
@@ -82,7 +87,7 @@ def test_007_negative_by_phone(selenium):
     assert err_mess.text == 'Неверный логин или пароль'
 
 
-# тест EXP-009 - проверка позитивного сценария авторизации по почте
+# тест EXP-009 - проверка авторизации по электронной почте. Позитивный сценарий
 def test_009_positive_by_email(selenium):
     form = AuthForm(selenium)
 
@@ -95,7 +100,7 @@ def test_009_positive_by_email(selenium):
     assert form.get_current_url() != '/account_b2c/page'
 
 
-# тест EXP-010 - проверка негативного сценария авторизации по почте
+# тест EXP-010 - проверка авторизации по электронной почте. Негативный сценарий
 def test_010_negative_by_email(selenium):
     form = AuthForm(selenium)
 
@@ -109,7 +114,7 @@ def test_010_negative_by_email(selenium):
     assert err_mess.text == 'Неверный логин или пароль'
 
 
-# тест EXP-016 - проверка получения временного кода на телефон и открытия формы для ввода кода
+# тест EXP-016 - авторизация по временному коду, отправленному на мобильный телефон в SMS
 def test_016_get_code(selenium):
     form = CodeForm(selenium)
 
@@ -169,7 +174,7 @@ def test_022_agreement(selenium):
     assert win_title == 'User agreement'
 
 
-# тест EXP-023 - проверка перехода по ссылке авторизации пользователя через вконтакте
+# тест EXP-023 - проверка перехода по ссылке авторизации пользователя через социальную сеть Вконтакте
 def test_023_auth_vk(selenium):
     form = AuthForm(selenium)
     form.vk_btn.click()
@@ -178,7 +183,7 @@ def test_023_auth_vk(selenium):
     assert form.get_base_url() == 'oauth.vk.com'
 
 
-# тест EXP-024 - проверка перехода по ссылке авторизации пользователя через одноклассники
+# тест EXP-024 - проверка перехода по ссылке авторизации пользователя через социальную сеть Одноклассники
 def test_024_auth_ok(selenium):
     form = AuthForm(selenium)
     form.ok_btn.click()
@@ -187,7 +192,7 @@ def test_024_auth_ok(selenium):
     assert form.get_base_url() == 'connect.ok.ru'
 
 
-# тест EXP-025 - проверка перехода по ссылке авторизации пользователя через майлру
+# тест EXP-025 - проверка перехода по ссылке авторизации пользователя через страницу mail.ru
 def test_025_auth_mailru(selenium):
     form = AuthForm(selenium)
     form.mailru_btn.click()
@@ -196,7 +201,7 @@ def test_025_auth_mailru(selenium):
     assert form.get_base_url() == 'connect.mail.ru'
 
 
-# тест EXP-026 - проверка перехода по ссылке авторизации пользователя через google
+# тест EXP-026 - проверка перехода по ссылке авторизации пользователя через Google
 def test_026_auth_google(selenium):
     form = AuthForm(selenium)
     form.google_btn.click()
@@ -205,7 +210,7 @@ def test_026_auth_google(selenium):
     assert form.get_base_url() == 'accounts.google.com'
 
 
-# тест EXP-027 - проверка перехода по ссылке авторизации пользователя через яндекс
+# тест EXP-027 - проверка перехода по ссылке авторизации пользователя через yandex.ru
 def test_027_auth_ya(selenium):
     form = AuthForm(selenium)
     form.ya_btn.click()
