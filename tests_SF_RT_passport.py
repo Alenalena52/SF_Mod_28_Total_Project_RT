@@ -121,7 +121,7 @@ def test_016_get_code(selenium):
     # ввод телефона
     form.address.send_keys(valid_phone)
 
-    # длительная пауза предназначена для ручного ввода капчи при необходимости
+    # применена длительная пауза 30 с для ручного ввода капчи при необходимости
     sleep(30)
     form.get_click()
 
@@ -130,7 +130,7 @@ def test_016_get_code(selenium):
     assert rt_code
 
 
-# тест EXP-020 - проверка перехода в форму восстановления пароля и её открытия
+# тест EXP-020 - переход в форму восстановления пароля и ее работы в соответствии с Требованиями
 def test_020_forgot_pass(selenium):
     form = AuthForm(selenium)
 
@@ -143,7 +143,7 @@ def test_020_forgot_pass(selenium):
     assert reset_pass.text == 'Восстановление пароля'
 
 
-# тест EXP-021 - проверка перехода в форму регистрации и её открытия
+# тест EXP-021 - переход в форму регистрации и 
 def test_021_register(selenium):
     form = AuthForm(selenium)
 
