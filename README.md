@@ -27,4 +27,4 @@
 
 python -m pytest -v --driver Chrome --driver-path chromedriver.exe test_SF_RT_passport.py
 
-В корне проекта в файле requirements.py описаны используемые библиотеки.
+В корне проекта в файле requirements.txt описаны используемые библиотеки.
