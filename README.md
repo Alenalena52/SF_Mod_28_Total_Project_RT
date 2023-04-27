@@ -21,7 +21,7 @@
 
 В файле settings.py - регистрационные данные для позитивных тестов авторизации
 
-В файле test_SF_RT_passport.py - автотесты. Все тесты помечены номером, который совпадает с номером тест-кейса в файле: https://docs.google.com/spreadsheets/d/12JgyW8qOhoWak9BE-K6iTfrVC2ymedoj/edit?usp=sharing&ouid=100674749469134479365&rtpof=true&sd=true
+В файле tests_SF_RT_passport.py - автотесты. Все тесты помечены номером, который совпадает с номером тест-кейса в файле: https://docs.google.com/spreadsheets/d/12JgyW8qOhoWak9BE-K6iTfrVC2ymedoj/edit?usp=sharing&ouid=100674749469134479365&rtpof=true&sd=true
 
 запуск автотестов (драйвер в одной папке с тест-скриптом)
 
