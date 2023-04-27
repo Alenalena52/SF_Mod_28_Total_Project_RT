@@ -11,9 +11,9 @@
 
 Требования по проекту: https://docs.google.com/document/d/1RRWhr_4bV_VTyNxr-lyDkJ3jaPVwXQFg/edit?usp=sharing&ouid=100674749469134479365&rtpof=true&sd=true
 
-Тест-кейсы и баг-отчет: https://docs.google.com/spreadsheets/d/12JgyW8qOhoWak9BE-K6iTfrVC2ymedoj/edit?usp=sharing&ouid=100674749469134479365&rtpof=true&sd=true
+Тестирование требований, Тест-кейсы и баг-отчет: https://docs.google.com/spreadsheets/d/12JgyW8qOhoWak9BE-K6iTfrVC2ymedoj/edit?usp=sharing&ouid=100674749469134479365&rtpof=true&sd=true
 
-Проведено ручное и автоматизированное тестирование
+Проведено ручное и автоматизированное тестирование с использованием PyTest и Selenium
 
 Для составления и написания тест-кейсов применены техники тест-дизайна: классы эквивалентности, анализ граничных значений, предугадывание ошибок.
 
@@ -21,8 +21,10 @@
 
 В файле settings.py - регистрационные данные для позитивных тестов авторизации
 
-В файле test_SF_RT_passport.py - автотесты (номер автотеста совпадает с номером тест-кейса)
+В файле test_SF_RT_passport.py - автотесты. Все тесты помечены номером, который совпадает с номером тест-кейса в файле: https://docs.google.com/spreadsheets/d/12JgyW8qOhoWak9BE-K6iTfrVC2ymedoj/edit?usp=sharing&ouid=100674749469134479365&rtpof=true&sd=true
 
 запуск автотестов (драйвер в одной папке с тест-скриптом)
 
 python -m pytest -v --driver Chrome --driver-path chromedriver.exe test_SF_RT_passport.py
+
+В корне проекта в файле requirements.py описаны используемые библиотеки.
